@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   //render(callback) manda a llamar-renderizar al temple engine (generar y entregar )
   //la vista al 
   //calculando
-  let emojieDataset = ['💻','🔍','🍕','🐶','🤨','😎'];
+  let emojieDataset = ['💻','🔍','🍕','🐶','🤨','😎','😍'];
   let emojie = emojieDataset[Math.floor(Math.random() *
   emojieDataset.length)];
   res.render('index', { 

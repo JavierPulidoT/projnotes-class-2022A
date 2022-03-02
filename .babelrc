@@ -1,0 +1,11 @@
+//Objeto JSON (Objeto JS)
+{
+    "presets":[
+        [
+         "@babel/preset-env",
+         {
+        "targets": {"node":"current"}  //que voy a estar utilizando de entorno
+         }
+        ]
+    ]
+}

@@ -18,7 +18,7 @@ import aboutRouter from "./routes/about";
 
 // Aqui se crea la instancia de express
 // (req, res, next)
-const app = express();
+const app = express();  //CAMBIO
 // Configuracion del motor de pantillas (templae Engine)
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Registrando las rtas en la APP
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/about', usersRouter);
+app.use('/about', aboutRouter);
 
 // catch 404 and forward to error handler
 //app.use(function(req, res, next) {
@@ -48,7 +48,7 @@ app.use((req,res,next)=>{
 });
 
 // error handler
-app.use((err, req, res, next)=> {
+app.use((err, req, res, next)=> {  //sE Cambio funtion declaretion por funtion asesion
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

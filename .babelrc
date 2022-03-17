@@ -4,8 +4,18 @@
         [
          "@babel/preset-env",
          {
-        "targets": {"node":"current"}  //que voy a estar utilizando de entorno
+        "targets": {"node":"current"}  //voy a estar utilizando de entorno
          }
+        ]
+    ],
+    "plugins": [
+        [
+            "module-resolver",{
+                "root": "./",
+                "alias": {
+                    "@s": "./server"
+                }
+            }
         ]
     ]
 }

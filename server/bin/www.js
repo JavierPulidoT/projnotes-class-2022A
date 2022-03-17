@@ -4,11 +4,8 @@
  * Module dependencies.
  */
 
- //var app = require('../app');  
- import app from '../app';
- //var debug = require('debug')('projnotes:server');  //(importar)(ejecutar lo importado)
+ import app from '@s/app';
  import Debug from 'debug';
- //var http = require('http');
  import http from "http";
  
  //creando instancia del debugger

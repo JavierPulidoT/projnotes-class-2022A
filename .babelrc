@@ -2,12 +2,12 @@
 {
     "presets":[
         [
-            "minify"
+            "minify", {"mangle":true}
         ],
         [
          "@babel/preset-env",
          {
-        "targets": {"node":"current"}  //voy a estar utilizando de entorno
+        "targets": {"node":"current"}  
          }
         ]
     ],

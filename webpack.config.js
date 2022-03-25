@@ -1,11 +1,11 @@
 //Import dependencia path
 //dependencia del core de Node
-const path = requiere('path');
+const path = require('path');
 
-mudule.exports = {
-    //1.Especificar el archivo de entrada
+module.exports = {
+    //1.Especificar el archivo de (entrada)
     entry: './client/index.js',
-    //2.Especificar el archivo de salida
+    //2.Especificar el archivo de (salida)
     output: {
         //2.1 Va a requerir la ruta absoluta de la salida
         path:path.resolve(__dirname,'public'),

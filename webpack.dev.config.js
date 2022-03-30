@@ -42,7 +42,7 @@ module.exports = {
                                     modules:false,
                                     useBuiltIns: 'usage',
                                     targets:'> 0.25%, not dead',  //% de navegadores del mercado
-                                    corejs: 3
+                                    corejs: 3,
                                 }
 
                             ]

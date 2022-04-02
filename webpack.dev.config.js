@@ -40,13 +40,15 @@ module.exports = {
                       options:{
                           presets:[
                             [
-                                '@babel/preset-env',{
-                                    modules:false,
-                                    useBuiltIns: 'usage',
-                                    targets:'> 0.25%, not dead',  //% de navegadores del mercado
-                                    corejs: 3,
+                                "@babel/preset-env",
+                                {
+                                  modules: false,
+                                  useBuiltIns: "usage",
+                                  targets: {
+                                    chrome: "80",
+                                  },
+                                  corejs: 3,
                                 },
-
                             ],
                           ],
                       },

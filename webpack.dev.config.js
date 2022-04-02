@@ -1,6 +1,8 @@
 //Import dependencia path
 //dependencia del core de Node
 const path = require('path');
+// Plugins para Webpack
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     //1.Especificar el archivo de (entrada)
@@ -43,15 +45,25 @@ module.exports = {
                                     useBuiltIns: 'usage',
                                     targets:'> 0.25%, not dead',  //% de navegadores del mercado
                                     corejs: 3,
-                                }
+                                },
 
-                            ]
-                          ]
-                      }
-                    }
-                ]
-            }
-        ]
-    }
-
+                            ],
+                          ],
+                      },
+                    },
+                ],
+            },
+            //Regla para CSS
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+              },
+        ],
+    },
+//  Plugins
+plugins: [
+    new MiniCssExtractPlugin({
+      filename: path.join("stylesheets", "styles.css"),
+    }),
+  ],
 };

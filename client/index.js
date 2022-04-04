@@ -3,7 +3,7 @@
 import './styles/style.css'
 import './styles/mystyle.css'
 
-console.log("🎁 Webpack Working!!!");
+console.log("🎁 Fron-End Working!!!");
 
 //default parameters ES6/2015
 let show = (m="😋") => {  //around funtion 

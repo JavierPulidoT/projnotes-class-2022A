@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/bin/www",
+    "start": "SET NODE_ENV=production && node ./dist/bin/www",
     "dev": "babel-watch ./server/bin/www",
     "client:server": "SET NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
-    "clean:server": "rm -rf dist",
+    "clean:server": "rimraf dist",
     "clean:client": "rimraf public/javascripts/bundle.js && rimraf public/stylesheets/styles.css", 
     "build:s": "npm run clean:server && babel ./server --out-dir dist --copy-files",
     "build:client": "npm run clean:client && webpack --config ./webpack.config.js --mode production"

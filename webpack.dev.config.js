@@ -4,6 +4,8 @@ const path = require('path');
 // Plugins para Webpack
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+//Agregando Soporte para ESLINT
+const EslinwebpackPlugin = require('eslint-webpack-plugin');
 module.exports = {
     //1.Especificar el archivo de (entrada)
     entry: './client/index.js',
@@ -67,5 +69,6 @@ plugins: [
     new MiniCssExtractPlugin({
       filename: path.join("stylesheets", "styles.css"),
     }),
+    new EslinwebpackPlugin()
   ],
 };

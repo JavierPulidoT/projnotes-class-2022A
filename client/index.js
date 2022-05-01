@@ -21,7 +21,7 @@ function resolveAfter2Seconds(){  //mostrara un string
 }
 
 async function asyncCall(){   //invoca una funcion asincrona, 
-    console.log("Calling asyn funtion!!!");
+    console.log("Calling async funtion!!!");
     const result = await resolveAfter2Seconds(); //await invoca promise como si fuera sincrono
     console.log(result);//Imprime "funtion resolve" en la consola
 }

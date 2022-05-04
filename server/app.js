@@ -10,7 +10,7 @@ import path from 'path';
 // Ayuda al manejo e cookies
 import cookieParser from 'cookie-parser';
 // Maneja el log de peticiones http
-import logger from 'morgan';
+import morgan from 'morgan';
 
 // Las rutas
 import webpack from 'webpack';
@@ -21,8 +21,10 @@ import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 import aboutRouter from './routes/about';
 
-// Importando los modulos de webpack
+// Importando nuestro logger
+import winston from './config/winston';
 
+// Importando los modulos de webpack
 // Configuracion
 import webpackConfig from '../webpack.dev.config';
 
@@ -77,7 +79,7 @@ app.set('view engine', 'hbs');
 
 // Todos los middleware globales
 // van primero que cualquier otro middleware en la app
-app.use(logger('dev'));
+app.use(morgan('dev', { stream: winston.stream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

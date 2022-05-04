@@ -9,10 +9,10 @@ console.log('🎁 Fron-End Working!!!');
 
 // default parameters ES6/2015
 const show = (m = '😋') => {
-  // around funtion
-  alert(m);
+  console.log(m);
 };
 show();
+
 // Asincronia...
 // Promises
 function resolveAfter2Seconds() {

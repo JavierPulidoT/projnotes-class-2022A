@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   const emojie =
     emojieDataset[Math.floor(Math.random() * emojieDataset.length)];
   res.render('index', {
-    title: 'Express',
+    title: 'ProjNotes',
     author: '🙍‍♂️Javier Pulido',
     emojie,
   });

@@ -18,10 +18,8 @@ import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 // Importando configurador de plantillas
 import templateEngineConfigurator from './config/templateEngine';
-
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
-import aboutRouter from './routes/about';
+// Importando enrutador principal
+import router from './routes/router';
 
 // Importando nuestro logger
 import winston from './config/winston';
@@ -87,21 +85,15 @@ app.use(cookieParser());
 // Middleware de archivos estaticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Registrando las rtas en la APP
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/about', aboutRouter);
+// Registrando las rutas en la APP
+router.addRoutes(app);
 
 // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-// next(createError(404));
-// });
-
 app.use((req, res, next) => {
   // Registrando el error 404
-  winston.error(
-    `404 - Not Found: ${req.method} ${req.originalUrl} : IP ${req.ip}`
-  );
+  // winston.error(
+  //  `404 - Not Found: ${req.method} ${req.originalUrl} : IP ${req.ip}`
+  // );
   next(createError(404));
 });
 

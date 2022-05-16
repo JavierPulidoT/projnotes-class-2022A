@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-shadow */
 /**
  * Module dependencies.
  */
@@ -17,10 +19,25 @@ import winston from '../config/winston';
 const debug = Debug('projnotes:server');
 
 /**
+ * Get port from environment and store in Express.
+ */
+const port = normalizePort(process.env.PORT || '3000');
+// app es una instancia de ExpressJs [] [Node]
+app.set('port', port);
+
+/**
  * Create HTTP server.
  */
 // callback
 const server = http.createServer(app); // (req,res,next,err)=>{} (petiicon respuesta next y error)
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port); // pone al server a escuchar
+// Se registran eventos
+server.on('error', onError); // En caso de error
+server.on('listening', onListening); // Cuando esta escuchando
 
 /**
  * Normalize a port into a number, string, or false.
@@ -41,19 +58,6 @@ function normalizePort(val) {
 
   return false;
 }
-
-/**
- * Get port from environment and store in Express.
- */
-const port = normalizePort(process.env.PORT || '3000');
-// app es una instancia de ExpressJs [] [Node]
-app.set('port', port);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-server.listen(port); // pone al server a escuchar
-// Se registran eventos
 
 /**
  * Event listener for HTTP server "error" event.
@@ -82,7 +86,6 @@ function onError(error) {
       throw error;
   }
 }
-server.on('error', onError); // En caso de error
 
 /**
  * Event listener for HTTP server "listening" event.
@@ -95,4 +98,3 @@ function onListening() {
   debug(`Listening on ${bind}`);
   winston.info(`Servidor escuchando en...${app.get('port')}`);
 }
-server.on('listening', onListening); // Cuando esta escuchando

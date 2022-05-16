@@ -11,7 +11,7 @@ const index = (req, res) => {
     author: '🙍‍♂️Javier Pulido',
     emojie,
   };
-  res.render('index', viewModel);
+  res.render('home/indexView', viewModel);
 };
 
 // URL: Get /about

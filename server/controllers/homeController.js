@@ -20,6 +20,9 @@ const about = (req, res) => {
     name: 'Javier Pulido',
     email: 'javierp.pulido@gmail.com',
     url: 'https://github.com/JavierPulidoT',
+    description:
+      'Aplicacion que te permite registrar ideas de proyectos. PWPC-II-2022A',
+    version: '0.0.alpha',
   });
 };
 

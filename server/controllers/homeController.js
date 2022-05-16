@@ -14,7 +14,17 @@ const index = (req, res) => {
   res.render('index', viewModel);
 };
 
+// URL: Get /about
+const about = (req, res) => {
+  res.render('home/aboutView', {
+    name: 'Javier Pulido',
+    email: 'javierp.pulido@gmail.com',
+    url: 'https://github.com/JavierPulidoT',
+  });
+};
+
 export default {
   // Action Methods
-  index, // el index es un metodo de homeController
+  index,
+  about,
 };

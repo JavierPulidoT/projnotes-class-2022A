@@ -12,7 +12,7 @@ const router = new Router();
 // GET /projects/ | GET /projects/index
 router.get(['/', '/index'], projectController.index);
 
-// Registrar una idea de proyecto
+// Envia el formulario para registrar una idea de proyecto
 // GET /projects/add
 router.get('/add', projectController.add);
 

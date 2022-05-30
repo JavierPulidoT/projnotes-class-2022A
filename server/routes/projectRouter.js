@@ -7,7 +7,7 @@ import projectController from '../controllers/projectController';
 // Creo una instancia del router
 const router = new Router();
 
-/* --- GET --- */
+/* -------- GET -------- */
 // Listar proyectos
 // GET /projects/ | GET /projects/index
 router.get(['/', '/index'], projectController.index);
@@ -15,6 +15,11 @@ router.get(['/', '/index'], projectController.index);
 // Envia el formulario para registrar una idea de proyecto
 // GET /projects/add
 router.get('/add', projectController.add);
+
+/* -------- POST  -------- */
+// Procesa el formulario que Agrega ideas de Proyectos
+// POST /projects/add
+router.post('/add', projectController.addPost);
 
 // Exportando en enrutador Projects
 export default router;

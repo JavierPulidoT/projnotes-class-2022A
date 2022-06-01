@@ -1,8 +1,8 @@
 // 1 Importaremos la biblioteca de validacion
 import * as Yup from 'yup';
 
-// 2 Crear el esquema de validacion
-const projectShema = Yup.object().shape({
+// 2 Crear el esquema de validacion (biblioteca Yup)
+const projectSchema = Yup.object().shape({
   name: Yup.string().required('Se requiere un nombre para el Proyecto'),
   description: Yup.string()
     .max(500, 'La descripcion esta limitada a 500 caracteres')
@@ -20,4 +20,4 @@ const getProject = (req) => {
   };
 };
 
-export { projectShema, getProject };
+export default { projectSchema, getProject };

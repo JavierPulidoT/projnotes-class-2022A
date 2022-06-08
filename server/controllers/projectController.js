@@ -1,4 +1,6 @@
 import log from '../config/winston';
+// Importando el Modelo Project
+import ProjectModel from '../models/ProjectModels';
 
 /* Action Methods */
 // Lista los proyectos
@@ -17,14 +19,14 @@ const add = (req, res) => {
 
 // Procesa el formulario que Agrega ideas de Proyectos
 // POST /projects/add
-const addPost = (req, res) => {
+const addPost = async (req, res) => {
   const { errorData } = req;
   // Crear view models para este actio method
   let project = {};
   let errorModel = {};
 
   if (errorData) {
-    log.info('Se retorna objeto de error de validacion');
+    log.error('💥 Se retorna objeto de error de validacion');
     // Rescatando el objecto validado
     project = errorData.value;
     // Usamos un reduce para asignar un objeto
@@ -40,22 +42,32 @@ const addPost = (req, res) => {
     }, {});
 
     // La validacion fallo
-    // res.status(200).json(errorData);
+    // return res.status(200).json(errorData);
   } else {
-    // Si Nó falló...
-    // Desestructurando la informacion del Formulario
-    // del objecto valido
-    const { validData } = req; // req (peticion)
-    log.info('Se retorna objecto Projecto valido');
-    // Regresar un objeto con los datos...
-    // obtenidos del formulario
-    // res.status(200).json(validData);
-    project = validData;
+    log.info('Se retorna un objeto Proyecto valido');
+    // Desestructurando la informacion
+    // del formulario del objeto valido
+    const { validData } = req;
+    // Crear un documento con los datos provistos
+    // por el formulario y guardar dicho documento
+    // en projectModel
+    const projectModel = new ProjectModel(validData);
+    // Siempre que se ejecuta una operacion
+    // que depende de un tercero, es una buena practica
+    // envolver esa operacion en un bloque try
+    try {
+      // Se salva el documento projecto
+      log.info('Se salva objeto Projecto');
+      project = await projectModel.save();
+    } catch (error) {
+      log.error(`Ha fallado el intento de salvar un proyecto:${error.message}`);
+      return res.status(500).json({ error });
+    }
   }
   // Respondemos con los viewModels generados
-  res.render('projects/addProjectView', { project, errorModel });
-  // res.status(200).json({ project, errorModel });
-  // si no fallo, errorModel va a ser un objecto vacio
+  // res.render('projects/addProjectView', { project, errorModel });
+  // Sanity check TODO:Provisional
+  return res.status(200).json({ project, errorModel });
 };
 
 // Exportando el controlador
